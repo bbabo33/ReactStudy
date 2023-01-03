@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Basic from './basic'
+import { HookEx } from './hook'
 import { Fragment } from 'react'
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           </a> */}
           <div>
             <Basic name="hong" birth={1994} firstInteger={10} lastInteger={100} />
+          </div>
+          <div>
+            <HookEx />
           </div>
         </header>
       </div>
