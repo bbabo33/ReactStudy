@@ -30,6 +30,7 @@ export default class Basic extends Component {
    *  3) render()
    *  4) getSnapshotBeforeUpdate()
    *  5) componentDidUpdate()
+   *  *** 5번 즉, React가 DOM을 업데이트 한 후, Hook을 호출한다(useEffect) 
    * 
    * 3. 소멸단계 - 마운트 해제
    *  1) componentWillUnmount()
