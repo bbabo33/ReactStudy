@@ -11,7 +11,7 @@ function App() {
   let tempData = 'aaaa';
 
   function tempFunction(val) {
-    console.log(tempData, 'in App');
+    // console.log(tempData, 'in App');
     /* 
       자식컴포넌트에서 부모가 가진 메서드가 호출되고
       값도 바뀌지만

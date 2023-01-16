@@ -33,28 +33,61 @@ function HookFunctionEx(props) {
      */
     const [count, setCount] = useState(0);
     const [name, setName] = useState('hong');
-    const [testObj, setTestObj] = useState({a: 1, b: 2, c:3});
+    const [testObj, setTestObj] = useState({ a: 1, b: 2, c: 3 });
+
+    /**
+     *  useEffect(콜백 함수, defendency array)
+     * 
+     *  1. defendency array를 받지 않고콜백 함수만 받을 때
+     *      -> 렌더링 될 때마다 useEffect가 실행된다.
+     *  2. defendency array를 빈 배열로 받고 콜백 함수도 받을 때
+     *      -> 처음 렌더링 때에만 useEffect를 실행시킨다.
+     *  3. defendency array도 받고 콜백 함수도 받을 때 
+     *      -> 처음 렌더링 될 때와 defendency array안에 있는 value값이 바뀔 때만 useEffect를 실행시킨다.
+     *      -> 여러개 써도 됨
+     */
+    // // 1번 케이스
+    // useEffect((props) => {
+    //     // console.log(props);
+    //     // function handleStatueChange() {
+    //     //     console.log('handleStatueChange in useEffect');
+    //     // }
+
+    //     // console.log(handleStatueChange());
+    //     console.log('렌더링 될 때마다 실행');
+    // });
+
+    //2번 케이스
+    // useEffect((props) => {
+    //     console.log('첫 렌더링 될 때만 실행');
+    // }, []);
+
+    // ****** 주의
+    // useEffect에서 defendencyArray에 같은 value를 넣어도 실행됨.
+    useEffect((props) => {
+        console.log('count가 변경될 때만 실행');
+    }, [count]);
+
+    // useEffect((props) => {
+    //     console.log('count가 변경될 때만 실행');
+    // }, [count]);
 
     useEffect((props) => {
-        function handleStatueChange() {
-            console.log('handleStatueChange in useEffect');
-        }
-        
-        console.log(handleStatueChange());
-    })
+        console.log('name이 변경될 때만 실행');
+    }, [name]);
 
     return (
         <div>
-            <p>{ name } clicked {count} times.</p>
+            <p>{name} clicked {count} times.</p>
             <button onClick={() => {
-                                    // class HookClassEx에 this.setState({ count: this.state.count + 1 })와 달리
-                                    // 변수가 병합되는게 아니라 엎어쳐진다
-                                    setCount(count + 1);
-                                    setName('jin');
-                                    setTestObj({a: 2, d: 4});
-                                    console.log(testObj);
-                                    props.emitFunction('data from child');
-                                    props.tempFunction('temp from child');
+                // class HookClassEx에 this.setState({ count: this.state.count + 1 })와 달리
+                // 변수가 병합되는게 아니라 엎어쳐진다
+                setCount(count + 1);
+                setName('jin');
+                setTestObj({ a: 2, d: 4 });
+                console.log(testObj);
+                props.emitFunction('data from child');
+                props.tempFunction('temp from child');
             }}> click me </button>
         </div>
     );
